@@ -1,6 +1,6 @@
 import json
 
-WALLET = '~/massa/massa-client/wallet.dat'
+WALLET = r'~/massa/massa-client/wallet.dat'
 
 # Удаляет из списка выбранные адреса из списка js
 # Удалять можно как по индексу так и по адресу кошелька
