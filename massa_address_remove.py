@@ -9,9 +9,7 @@ WALLET = Path(pathlib.Path.cwd(), 'massa', 'massa-client', 'wallet.dat')
 # При ошибках возвращает пустой список None
 def del_address(js, addr=None):
     if addr == None:
-        js_ = js
-        js_.append(js[0])
-        return js_
+        return js[:1]
     else:
         try:
             idx = int(addr) - 1
