@@ -39,14 +39,12 @@ def save_addr(js, WALLET):
         return
     with open(WALLET, 'w') as f:
         json.dump(js, f)
-        f.close()
-
-
+    
+    
 # Main
 if __name__ == "__main__":
     with open(WALLET, 'r') as f:
-        js = json.load(f)
-        f.close()            
+        js = json.load(f)          
        
     if len(js) == 1:
         print("В кошельке только один адрес. Нечего удалять")
