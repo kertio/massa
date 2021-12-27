@@ -11,6 +11,7 @@ def del_address(js, addr=None):
     if addr == None:
         return js[:1]
     
+    
     try:
         idx = int(addr) - 1
         if idx < 0 or idx > len(js):
