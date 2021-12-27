@@ -22,8 +22,6 @@ def del_address(js, idx = None, addr=None):
 # Сохранить данные из списка в файл в формате JSON
 # Файл при этом очищается, а данные записываются новые в пустой файл
 def save_addr(js, WALLET):
-    if js == None:
-        return
     with open(WALLET, 'w') as f:
         json.dump(js, f)
     
