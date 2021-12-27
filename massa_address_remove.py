@@ -1,4 +1,5 @@
 import json
+from os import system
 import pathlib
 from pathlib import Path
 
@@ -33,21 +34,23 @@ if __name__ == "__main__":
        
     if len(js) == 1:
         print("В кошельке только один адрес. Нечего удалять")
-    else:    
+        exit(0)    
         
-        print("Список адресов, которые были найдены в файле wallet.dat:\n")
-        for i, j in enumerate(js):
-            print(f"{i+1}) {j}")
-        print("\nВведите индекс или адрес кошелька, который нужно удалить. (Если ничего не вводить, по умолчанию удалятся все, кроме первого)")
-        addr = input();
+    print("Список адресов, которые были найдены в файле wallet.dat:\n")
+    for i, j in enumerate(js):
+        print(f"{i+1}) {j}")
+    print("\nВведите индекс или адрес кошелька, который нужно удалить. (Если ничего не вводить, по умолчанию удалятся все, кроме первого)")
+    addr = input();
 
-        
-        try:
-            addr = int(addr) - 1
-            del_address(js, idx = addr, addr = None)
-        except ValueError:
-            js = del_address(js) if addr == '' else  del_address(js, idx = None, addr = addr)
-       
-        save_addr(js, WALLET)
+    if addr == '':
+        js_ = del_address(js)
+    elif addr.isdigit():
+        js_ = del_address(js, idx = int(addr) - 1)
+    else:
+        js_ = del_address(js, addr = addr)
+
+
+    if js_ != js:
+        save_addr(js_, WALLET)
 
         
