@@ -10,23 +10,23 @@ WALLET = Path(pathlib.Path.cwd(), 'massa', 'massa-client', 'wallet.dat')
 def del_address(js, addr=None):
     if addr == None:
         return js[:1]
-    else:
-        try:
-            idx = int(addr) - 1
-            if idx < 0 or idx > len(js):
-                print("ERROR! Не верно указан индекс кошелька!!!")
-                js = None
-                return
-            js.pop(idx)
-            print('Выбранный адрес кошелька удален!')
+    
+    try:
+        idx = int(addr) - 1
+        if idx < 0 or idx > len(js):
+            print("ERROR! Не верно указан индекс кошелька!!!")
+            js = None
+            return
+        js.pop(idx)
+        print('Выбранный адрес кошелька удален!')
 
-        except ValueError:
-            try:
-                js.remove(addr)
-                print('Выбранный адрес кошелька удален!')
-            except:    
-                print("ERROR! Не верно указан адрес кошелька")
-                js = None
+    except ValueError:
+        try:
+            js.remove(addr)
+            print('Выбранный адрес кошелька удален!')
+        except:    
+            print("ERROR! Не верно указан адрес кошелька")
+            js = None
 
     return js
 
