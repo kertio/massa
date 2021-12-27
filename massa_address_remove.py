@@ -56,11 +56,8 @@ if __name__ == "__main__":
         print("\nВведите индекс или адрес кошелька, который нужно удалить. (Если ничего не вводить, по умолчанию удалятся все, кроме первого)")
         addr = input();
 
-        if addr == '':
-            js = del_address(js)
-        else:
-            js = del_address(js, addr)
-
+        js = del_address(js) if addr == '' else del_address(js, addr)
+       
         save_addr(js, WALLET)
 
         
