@@ -7,28 +7,16 @@ WALLET = Path(pathlib.Path.cwd(), 'massa', 'massa-client', 'wallet.dat')
 # Удаляет из списка выбранные адреса из списка js
 # Удалять можно как по индексу так и по адресу кошелька
 # При ошибках возвращает пустой список None
-def del_address(js, addr=None):
-    if addr == None:
+def del_address(js, idx = None, addr=None):
+    if addr == None and idx == None:
         return js[:1]
     
-    
     try:
-        idx = int(addr) - 1
-        if idx < 0 or idx > len(js):
-            print("ERROR! Не верно указан индекс кошелька!!!")
-            js = None
-            return
-        js.pop(idx)
+        js.pop(idx) if addr == None else js.remove(addr)
         print('Выбранный адрес кошелька удален!')
-
-    except ValueError:
-        try:
-            js.remove(addr)
-            print('Выбранный адрес кошелька удален!')
-        except:    
-            print("ERROR! Не верно указан адрес кошелька")
-            js = None
-
+    except Exception:
+        print('Индекс или адрес кошелька указаны неверно\n')
+   
     return js
 
 # Сохранить данные из списка в файл в формате JSON
@@ -55,7 +43,12 @@ if __name__ == "__main__":
         print("\nВведите индекс или адрес кошелька, который нужно удалить. (Если ничего не вводить, по умолчанию удалятся все, кроме первого)")
         addr = input();
 
-        js = del_address(js) if addr == '' else del_address(js, addr)
+        
+        try:
+            addr = int(addr) - 1
+            del_address(js, idx = addr, addr = None)
+        except ValueError:
+            js = del_address(js) if addr == '' else  del_address(js, idx = None, addr = addr)
        
         save_addr(js, WALLET)
 
