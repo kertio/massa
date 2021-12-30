@@ -11,7 +11,7 @@ WALLET = Path(pathlib.Path.cwd(), 'massa', 'massa-client', 'wallet.dat')
 def del_address(js, in_addr):
     try:
         if str(in_addr).isdigit():
-            js.pop(int(int(in_addr) - 1))
+            js.pop(int(in_addr) - 1)
         elif in_addr != '':
             js.remove(in_addr)
         else:
