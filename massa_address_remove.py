@@ -47,7 +47,7 @@ def main():
 
 
     print("\nВведите индекс или адрес кошелька, который нужно удалить. (Если ничего не вводить, по умолчанию удалятся все, кроме первого)")
-    if js := save_addr(del_address(js, input()), WALLET) != None
+    if js := save_addr(del_address(js, input()), WALLET) != None:
         print('\nАдреса удалены.\n')
 
 if __name__ == "__main__":
