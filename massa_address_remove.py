@@ -30,6 +30,7 @@ def save_addr(js, WALLET):
 
     with open(WALLET, 'w') as f:
         json.dump(js, f)
+        print('\nАдреса удалены.\n')
     
     
 # Main
@@ -47,8 +48,8 @@ def main():
 
 
     print("\nВведите индекс или адрес кошелька, который нужно удалить. (Если ничего не вводить, по умолчанию удалятся все, кроме первого)")
-    if save_addr(del_address(js, input()), WALLET) != None:
-        print('\nАдреса удалены.\n')
+    save_addr(del_address(js, input()), WALLET)
+        
 
 if __name__ == "__main__":
     main()
